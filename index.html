@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textos E-mail - OdontoGroup</title>
+
+    <link rel="icon" href="imagens/aviao-de-papel.ico" type="image/x-icon">
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #21213b; /* Azul escuro */
+            color: #EAEAEA; /* Cor do texto */
+            animation: fadeIn 1s ease-in;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff00aa; 
+            margin-bottom: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input, select {
+            background-color: #EAEAEA; /* Fundo claro */
+            color: #333; /* Texto escuro */
+        }
+
+        button {
+            background-color: #ff00aa; /* Rosa */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff00dd; /* Rosa mais escuro ao passar o mouse */
+        }
+
+        #result {
+            white-space: pre-line; /* Mantém quebras de linha */
+            background-color: #2E2E2E; /* Fundo para o resultado */
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>TEXTOS PARA E-MAIL</h1>
+    <label for="name">Nome do Cliente:</label>
+    <input type="text" id="name" placeholder="Digite o nome">
+
+    <label for="protocol">Protocolo:</label>
+    <input type="text" id="protocol" placeholder="Digite o protocolo">
+
+    <label for="purpose">Escolha a finalidade:</label>
+    <select id="purpose">
+        <option value="">-- Selecione --</option>
+        <option value="tentativaContato">Tentativa de Contato</option>
+        <option value="acusamosRecebimento">Acusamos o Recebimento</option>
+        <option value="comprovanteCancelamento">Comprovante de Cancelamento</option>
+        <option value="acusacaoReembolso">Acusar Recebimento Reembolso</option>
+        <option value="envioRedes">Envio de Redes</option>
+        <option value="carteirinha">Carteirinha</option>
+        <option value="semCPF">Solicitar o CPF</option>
+        <option value="formularioReembolso">Formulário de reembolso</option>
+        <option value="boleto">Envio de boleto</option>
+        <option value="guiaContratual">Guia de Leitura Contratual</option>
+        <option value="agendamento">Agendamento de consulta</option>
+    </select>
+
+    <button onclick="generateText()">Gerar Texto</button>
+
+    <h2>E-mail gerado:</h2>
+    <p id="result"></p>
+
+    <script>
+        const texts = {
+            tentativaContato:  `Título: ODONTOGROUP - TENTATIVA DE CONTATO
+            
+            Prezado(a) {name}, {greeting}!
+
+Tentamos contato através do telefone xxxxxxxxxx, porém não obtivemos sucesso. 
+Por gentileza, entre em contato com a nossa central de atendimento o mais breve possível referente à sua solicitação realizada através do protocolo de n° {protocol}.`,
+
+            acusamosRecebimento: `Prezado(a) {name}, {greeting}!
+
+Acusamos o recebimento da sua solicitação por meio do protocolo de n.º {protocol} e informamos que direcionamos ao setor responsável para as devidas tratativas.
+Em breve retornaremos o contato via e-mail com mais informações.`,
+
+            comprovanteCancelamento: `Título: ODONTOGROUP - COMPROVANTE DE CANCELAMENTO
+            
+            Prezado(a) {name}, {greeting}!
+
+Em atendimento à sua solicitação realizada através do protocolo de n.º {protocol}, segue em anexo o comprovante de cancelamento do contrato.`,
+
+            acusacaoReembolso: `Prezado(a) {name}, {greeting}!
+
+Acusamos o recebimento de sua solicitação por meio do protocolo de n.º {protocol} e informamos que a documentação foi redirecionada ao nosso setor responsável para análise. 
+Desse modo, em breve entraremos em contato com demais informações.`,
+
+            envioRedes: `Título: ODONTOGROUP - REDES DE ATENDIMENTO
+            
+            Prezado(a) {name}, {greeting}!
+
+Em atendimento à sua solicitação realizada por meio do protocolo de n.º {protocol}, seguem abaixo as redes de atendimento para a especialidade de xxxxxxxxxx.`,
+
+            agendamento: `Título: ODONTOGROUP - AGENDAMENTO DE CONSULTA
+            
+            Prezado(a) {name}, {greeting}!
+            
+Em atendimento à sua solicitação realizada através do protocolo de atendimento de n.º {protocol}, listamos abaixo as informações referente ao agendamento da sua consulta:
+
+AVALIAÇÃO xxxxxxxxxxx
+
+Dia: xxxxxx.
+Clínica: xxxxx.
+Dr(a): xxxx.
+
+Por gentileza, compareça a consulta com antecedência de no mínimo 10 minutos e caso possua, leve suas radiografias, isso facilita o seu atendimento.
+ 
+Caso não consiga comparecer na consulta informada acima na data e horário marcado, por gentileza, entre em contato com a clínica para realizar o reagendamento ou cancelamento da sua consulta com no mínimo 24 horas de antecedência.`,
+
+            carteirinha: `Título: ODONTOGROUP - CARTEIRINHA
+            
+            Prezado(a) {name}, {greeting}!
+
+Em atendimento à sua solicitação pelo protocolo de atendimento n.º {protocol}, segue em anexo sua carteirinha e a de sua dependente do plano odontológico. 
+Lembrando que já está disponível pelo Aplicativo - OdontoGroup Associado a carteirinha online, baixe nosso APP através do Apple Store (iOS) ou Play Store (Android) e tenha essa e outros serviços na palma da sua mão. 
+Em seu primeiro acesso no APP seu login é a 1ª letra de seu nome mais os 3 primeiros dígitos do seu CPF.`,
+
+            semCPF: `Prezado(a) {name}, {greeting}!
+
+Acusamos o recebimento de sua solicitação e para que possamos localizar o seu contrato em nosso sistema, por gentileza nos informe seu nome completo, n° do seu CPF e telefone de contato.`,
+
+            formularioReembolso: `Título: ODONTOGROUP - FORMULÁRIO DE REQUISIÇÃO DE REEMBOLSO
+            
+            Prezado(a) {name}, {greeting}!
+            
+Em atenção à sua solicitação realizada por meio do protocolo de n.º {protocol}, segue em anexo o Formulário de Requisição de Reembolso (FRR). 
+Solicitamos a leitura do formulário com atenção, considerando as exigências pertinentes ao preenchimento integral de todas as seções, visando à eficiência do processo de reembolso.`,
+
+            boleto: `Título: ODONTOGROUP - BOLETO
+
+            Prezado(a) {name}, {greeting}!
+
+            Em atenção à sua solicitação realizada por meio do protocolo de n.º {protocol}, segue em anexo o boleto referente xxxxxxxxxxx.`,
+
+            guiaContratual: `Título: ODONTOGROUP - GUIA DE LEITURA CONTRATUAL
+
+            Prezado(a) {name}, {greeting}!
+
+            Em atendimento à sua solicitação realizada através do protocolo de atendimento de n.º {protocol}, segue o Guia de Leitura Contratual contendo todas as informações referente o produto contratado, inclusive a cobertura do plano odontológico.`,
+        };
+
+        function getGreeting() {
+            const hours = new Date().getHours();
+            if (hours < 12) {
+                return "bom dia";
+            } else if (hours < 18) {
+                return "boa tarde";
+            } else {
+                return "boa noite";
+            }
+        }
+
+        function capitalizeName(name) {
+            return name
+                .toLowerCase()
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+        }
+
+        function generateText() {
+            const rawName = document.getElementById("name").value;
+            const protocol = document.getElementById("protocol").value;
+            const purpose = document.getElementById("purpose").value;
+            const resultElement = document.getElementById("result");
+            const greeting = getGreeting();
+            const name = capitalizeName(rawName);
+
+            if (name && protocol && purpose) {
+                const textTemplate = texts[purpose];
+                const personalizedText = textTemplate.replace(/{name}/g, name)
+                                                     .replace(/{greeting}/g, greeting)
+                                                     .replace(/{protocol}/g, protocol);
+                resultElement.textContent = personalizedText;
+            } else {
+                resultElement.textContent = "Por favor, preencha o nome, o protocolo e escolha uma finalidade.";
+            }
+        }
+    </script>
+
+</body>
+</html>
