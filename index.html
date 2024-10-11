@@ -186,8 +186,9 @@
         <option value="agendamento">Agendamento de consulta</option>
         <option value="carteirinha">Carteirinha</option>
         <option value="comprovanteCancelamento">Comprovante de cancelamento</option>
-        <option value="boleto">Envio de Boleto</option>
-        <option value="envioRedes">Envio de Redes</option>
+        <option value="boleto">Envio de boleto</option>
+        <option value="envioRedes">Envio de redes</option>
+        <option value="exclusaoProposta">Exclusão de proposta</option>
         <option value="formularioReembolso">Formulário de reembolso</option>
         <option value="guiaContratual">Guia de leitura contratual</option>
         <option value="semCPF">Solicitar o CPF</option>
@@ -209,17 +210,77 @@
 
     <script>
         const texts = {
-            tentativaContato: `Título: ODONTOGROUP - TENTATIVA DE CONTATO\n\nPrezada(o) {name}, {greeting}!\n\nTentamos contato através do telefone xxxxxxxxxx, porém não obtivemos sucesso. Entre em contato com nossa central de atendimento sobre o protocolo n° {protocol}.`,
-            acusamosRecebimento: `Prezada(o) {name}, {greeting}!\n\nAcusamos o recebimento da sua solicitação pelo protocolo n.º {protocol}. Em breve retornaremos com mais informações.`,
-            comprovanteCancelamento: `Título: ODONTOGROUP - COMPROVANTE DE CANCELAMENTO\n\nPrezada(o) {name}, {greeting}!\n\nSegue em anexo o comprovante de cancelamento do contrato, referente ao protocolo n.º {protocol}.`,
-            acusacaoReembolso: `Prezada(o) {name}, {greeting}!\n\nRecebemos sua solicitação pelo protocolo n.º {protocol}. A documentação foi redirecionada ao setor responsável para análise.`,
-            envioRedes: `Título: ODONTOGROUP - REDES DE ATENDIMENTO\n\nPrezada(o) {name}, {greeting}!\n\nSegue abaixo as redes de atendimento para a especialidade de xxxxxxxxxx, referente ao protocolo n.º {protocol}.`,
-            agendamento: `Título: ODONTOGROUP - AGENDAMENTO DE CONSULTA\n\nPrezada(o) {name}, {greeting}!\n\nInformações sobre o agendamento da sua consulta pelo protocolo n.º {protocol}: AVALIAÇÃO xxxxxxxxxxx.\nDia: xxxxxx.\nClínica: xxxxx.\nDr(a): xxxx.\n\nCompareça com 10 minutos de antecedência e leve suas radiografias, se tiver.`,
-            carteirinha: `Título: ODONTOGROUP - CARTEIRINHA\n\nPrezada(o) {name}, {greeting}!\n\nSegue em anexo sua carteirinha e a de sua dependente, referente ao protocolo n.º {protocol}. Baixe nosso APP para acessá-la online.`,
-            semCPF: `Prezada(o) {name}, {greeting}!\n\nPara localizar seu contrato, informe seu nome completo, CPF e telefone.`,
-            formularioReembolso: `Título: ODONTOGROUP - FORMULÁRIO DE REQUISIÇÃO DE REEMBOLSO\n\nPrezada(o) {name}, {greeting}!\n\nSegue em anexo o Formulário de Requisição de Reembolso (FRR) referente ao protocolo n.º {protocol}.`,
-            boleto: `Título: ODONTOGROUP - BOLETO\n\nPrezada(o) {name}, {greeting}!\n\nSegue em anexo o boleto referente a xxxxxxxxxxx, protocolo n.º {protocol}.`,
-            guiaContratual: `Título: ODONTOGROUP - GUIA DE LEITURA CONTRATUAL\n\nPrezada(o) {name}, {greeting}!\n\nSegue o Guia de Leitura Contratual referente ao protocolo n.º {protocol}.`,
+            tentativaContato: `Título: ODONTOGROUP - TENTATIVA DE CONTATO\n
+Prezada(o) {name}, {greeting}!\n
+Tentamos contato através do telefone xxxxxxxxxx, porém não obtivemos sucesso.
+Por gentileza, entre em contato com a nossa central de atendimento o mais breve possível referente à sua solicitação do protocolo de atendimento n°. {protocol}.`,
+            
+            acusamosRecebimento: `Prezada(o) {name}, {greeting}!\n
+Acusamos o recebimento da sua solicitação por meio do protocolo de n.º {protocol}, iremos verificar as informações relatadas e em breve retornaremos com mais informações.`,
+            
+            comprovanteCancelamento: `Título: ODONTOGROUP - COMPROVANTE DE CANCELAMENTO\n
+Prezada(o) {name}, {greeting}!\n
+Em atenção à sua solicitação realizada através do protocolo de n.º {protocol}, segue em anexo o comprovante de cancelamento do contrato.`,
+            
+            acusacaoReembolso: `Prezada(o) {name}, {greeting}!\n
+Acusamos o recebimento da sua solicitação através do protocolo de n.º {protocol} e informamos que a documentação foi direcionada ao setor responsável para análise.
+Em breve retornaremos o contato com mais informações.`,
+            
+            envioRedes: `Título: ODONTOGROUP - REDES DE ATENDIMENTO\n
+Prezada(o) {name}, {greeting}!\n
+Em atenção à sua solicitação realizada por meio do protocolo de n.º {protocol}, seguem abaixo as redes de atendimento para a especialidade de xxxxxxxxxx.`,
+            
+            agendamento: `Título: ODONTOGROUP - AGENDAMENTO DE CONSULTA\n
+Prezada(o) {name}, {greeting}!\n
+Em atenção à sua solicitação realizada por meio do protocolo de n.º {protocol}, seguem abaixo os dados referentes ao agendamento da sua consulta.\n
+            
+AVALIAÇÃO xxxxxxxxxxx.\n
+Dia: xxxxxx.
+Clínica: xxxxx.
+Dr(a): xxxx.\n
+
+Compareça com 10 minutos de antecedência e leve suas radiografias, se tiver.`,
+            
+            carteirinha: `Título: ODONTOGROUP - CARTEIRINHA\n
+Prezada(o) {name}, {greeting}!\n
+Em atenção à sua solicitação realizada por meio do protocolo de n.º {protocol}, segue em anexo sua carteirinha virtual do plano odontológico.\n
+
+Baixe nosso nosso aplicativo para acessá-la de forma simples e online. 
+Caso ainda não possua nosso aplicativo, basta buscar por "OdontoGroup Associado" na loja de aplicativos do seu dispositivo celular e realizar o primeiro acesso.`,
+
+            semCPF: `Prezada(o) {name}, {greeting}!\n
+Acusamos o recebimento da sua solicitação e para que possamos localizar o seu contrato, informe-nos seu nome completo, CPF e telefone.`,
+            
+            formularioReembolso: `Título: ODONTOGROUP - FORMULÁRIO DE REQUISIÇÃO DE REEMBOLSO\n
+Prezada(o) {name}, {greeting}!\n
+
+Em atenção à sua solicitação realizada através do protocolo de n.º {protocol}, segue em anexo o Formulário de Requisição de Reembolso. 
+Para que nossa operadora possa prosseguir com a análise do reembolso, solicitamos a leitura do formulário com atenção, devido exigências quanto o preenchimento de todos os campos existentes para andamento do processo de reembolso.
+Lembrando que, no formulário há campos referentes aos tratamentos odontológicos onde o profissional cirurgião-dentista deverá preencher, carimbar e assinar.\n
+
+Juntamente do formulário de reembolso, é necessário encaminhar as radiografias anteriores e posteriores ao procedimento realizado.
+Solicitamos também, que encaminhe juntamente as documentações já mencionadas, a nota fiscal ou recibo de pagamento, emitidos pelo Cirurgião-Dentista, com o valor correspondente aos tratamentos descritos no formulário, além do comprovante de pagamento bancário.
+Esclarecemos que o comprovante de pagamento referido, pode ser a via emitida pela máquina no caso de pagamento via cartão, um print do desconto em seu aplicativo bancário ou comprovante de transferência no caso de pagamento por PIX ou transferência bancária. 
+
+
+Esclarecemos que o comprovante de pagamento referido, pode ser a via emitida pela máquina no caso de pagamento via cartão, um print do desconto em seu aplicativo bancário ou comprovante de transferência no caso de pagamento por PIX ou transferência bancária.
+Ao realizar o envio da documentação completa e análise da solicitação pela Operadora, sendo essa aprovada, o pagamento do reembolso será em até 30 dias.`,
+        
+            boleto: `Título: ODONTOGROUP - BOLETO\n
+Prezada(o) {name}, {greeting}!\n
+Em atenção à sua solicitação realizada através do protocolo de n.º {protocol}, segue em anexo o boleto referente ao mês xx/xx/xxxx.,`,
+            
+            guiaContratual: `Título: ODONTOGROUP - GUIA DE LEITURA CONTRATUAL\n
+Prezada(o) {name}, {greeting}!\n
+Em atenção à sua solicitação realizada por meio do protocolo de n.º {protocol}, segue em anexo o Guia de Leitura Contratual contendo todas as informações referente o produto contratado, inclusive a cobertura do plano odontológico.
+.`,
+
+            exclusaoProposta: `Título: ODONTOGROUP - GUIA DE LEITURA CONTRATUAL\n
+Prezadas(os), {greeting}!\n
+Conforme atendimento realizado através do protocolo de n.º {protocol}, por gentileza, efetuar o cancelamento da proposta em aberto nos dados abaixo:\n
+Nome:
+CPF:`,
+
         };
 
         function getGreeting() {
