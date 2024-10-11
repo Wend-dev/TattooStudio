@@ -3,225 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Textos E-mail - OdontoGroup</title>
+    <title>Textos prontos</title>
 
     <link rel="icon" href="imagens/aviao-de-papel.ico" type="image/x-icon">
-   
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Chakra Petch";
+            font-weight: 300;
+            font-style: normal;
             margin: 0;
             padding: 20px;
-            background-color: #21213b; /* Azul escuro */
-            color: #EAEAEA; /* Cor do texto */
+            background-color: #000000;
+            color: #EAEAEA;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             animation: fadeIn 1s ease-in;
         }
-
         h1 {
-            text-align: center;
-            color: #ff00aa; 
-            margin-bottom: 20px;
-            font-family: Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            background-color: #5e5e5e;
+            border: 2px solid #505050;
             font-size: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 2px;
+            width: 100%;
+            max-width: 400px;
+        
         }
-
+        p{
+            padding-top: 10px;
+        }
+        h2 {
+            font-family: "Chakra Petch", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            margin-top: 25px;
+            font-size: 24px;
+        }
+        h6 {
+            font-size: 15px;
+            animation: piscar 1s infinite;
+        }
+        @keyframes piscar {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+        }
         label {
-            display: block;
             margin-top: 15px;
             font-weight: bold;
         }
-
-        input, select, button {
+        input {
             width: 100%;
+            max-width: 380px;
             padding: 10px;
             margin-top: 10px;
             border: none;
             border-radius: 5px;
-            font-size: 16px;
-        }
-
-        input, select {
-            background-color: #EAEAEA; /* Fundo claro */
-            color: #333; /* Texto escuro */
+            font-family: "Chakra Petch";
         }
 
         button {
-            background-color: #ff00aa; /* Rosa */
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+        
+        }
+        input, select {
+            background-color: #EAEAEA;
+            color: #333;
+        }
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            width: 25pc;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-family: "Chakra Petch";
+        }
+        button {
+            font-family: "Chakra Petch";
+            font-style: bold;
+            font-size: 15px;
+            background-color: #ff00aa;
             color: white;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
         button:hover {
-            background-color: #ff00dd; /* Rosa mais escuro ao passar o mouse */
+            background-color: #ffffff;
+            color: #ff00aa;
         }
-
         #result {
-            white-space: pre-line; /* Mantém quebras de linha */
-            background-color: #2E2E2E; /* Fundo para o resultado */
+            white-space: pre-wrap;
+            background-color: #2E2E2E;
             padding: 15px;
             border-radius: 5px;
-            margin-top: 20px;
+            margin-top: 2px;
+            width: 100%;
+            max-width: 400px;
             animation: slideIn 0.5s ease-in-out;
+        }
+
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            border: 1px solid #ff008c;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            text-align: center;
+            color: #ff00aa;
+            font-family: "Chakra Petch", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 20px;
+            opacity: 0; /* Inicia invisível */
+            animation: fadeIn 0.5s forwards; /* Aplica a animação */
+        }
+        .modal-content.fade-out {
+            animation: fadeOut 0.5s forwards; /* Aplica a animação de desvanecimento ao fechar */
         }
 
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
         @keyframes slideIn {
             from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+
     </style>
 </head>
 <body>
 
-    <h1>TEXTOS PARA E-MAIL</h1>
-    <label for="name">Nome do Cliente:</label>
+    <h1> </h1>
+    <label for="name">NOME DO CLIENTE</label>
     <input type="text" id="name" placeholder="Digite o nome">
 
-    <label for="protocol">Protocolo:</label>
+    <label for="protocol">PROTOCOLO</label>
     <input type="text" id="protocol" placeholder="Digite o protocolo">
 
-    <label for="purpose">Escolha a finalidade:</label>
+    <label for="purpose">ESCOLHA A FINALIDADE</label>
     <select id="purpose">
         <option value="">-- Selecione --</option>
-        <option value="tentativaContato">Tentativa de Contato</option>
-        <option value="acusamosRecebimento">Acusamos o Recebimento</option>
-        <option value="comprovanteCancelamento">Comprovante de Cancelamento</option>
-        <option value="acusacaoReembolso">Acusar Recebimento Reembolso</option>
-        <option value="envioRedes">Envio de Redes</option>
-        <option value="carteirinha">Carteirinha</option>
-        <option value="semCPF">Solicitar o CPF</option>
-        <option value="formularioReembolso">Formulário de reembolso</option>
-        <option value="boleto">Envio de boleto</option>
-        <option value="guiaContratual">Guia de Leitura Contratual</option>
+        <option value="acusamosRecebimento">Acusamos o recebimento</option>
+        <option value="acusacaoReembolso">Acusar recebimento - reembolso</option>
         <option value="agendamento">Agendamento de consulta</option>
+        <option value="carteirinha">Carteirinha</option>
+        <option value="comprovanteCancelamento">Comprovante de cancelamento</option>
+        <option value="boleto">Envio de Boleto</option>
+        <option value="envioRedes">Envio de Redes</option>
+        <option value="formularioReembolso">Formulário de reembolso</option>
+        <option value="guiaContratual">Guia de leitura contratual</option>
+        <option value="semCPF">Solicitar o CPF</option>
+        <option value="tentativaContato">Tentativa de contato</option>
     </select>
 
-    <button onclick="generateText()">Gerar Texto</button>
+    <button onclick="generateText()">GERAR TEXTO</button>
 
-    <h2>E-mail gerado:</h2>
+    <h2>TEXTO GERADO:</h2>
     <p id="result"></p>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p>SEMPRE CONSIDERE VERIFICAR INFORMAÇÕES IMPORTANTES =)</p>
+            <h6>(clique em qualquer lugar para prossegir) </h6>
+        </div>
+    </div>
 
     <script>
         const texts = {
-            tentativaContato:  `Título: ODONTOGROUP - TENTATIVA DE CONTATO
-            
-            Prezado(a) {name}, {greeting}!
-
-Tentamos contato através do telefone xxxxxxxxxx, porém não obtivemos sucesso. 
-Por gentileza, entre em contato com a nossa central de atendimento o mais breve possível referente à sua solicitação realizada através do protocolo de n° {protocol}.`,
-
-            acusamosRecebimento: `Prezado(a) {name}, {greeting}!
-
-Acusamos o recebimento da sua solicitação por meio do protocolo de n.º {protocol} e informamos que direcionamos ao setor responsável para as devidas tratativas.
-Em breve retornaremos o contato via e-mail com mais informações.`,
-
-            comprovanteCancelamento: `Título: ODONTOGROUP - COMPROVANTE DE CANCELAMENTO
-            
-            Prezado(a) {name}, {greeting}!
-
-Em atendimento à sua solicitação realizada através do protocolo de n.º {protocol}, segue em anexo o comprovante de cancelamento do contrato.`,
-
-            acusacaoReembolso: `Prezado(a) {name}, {greeting}!
-
-Acusamos o recebimento de sua solicitação por meio do protocolo de n.º {protocol} e informamos que a documentação foi redirecionada ao nosso setor responsável para análise. 
-Desse modo, em breve entraremos em contato com demais informações.`,
-
-            envioRedes: `Título: ODONTOGROUP - REDES DE ATENDIMENTO
-            
-            Prezado(a) {name}, {greeting}!
-
-Em atendimento à sua solicitação realizada por meio do protocolo de n.º {protocol}, seguem abaixo as redes de atendimento para a especialidade de xxxxxxxxxx.`,
-
-            agendamento: `Título: ODONTOGROUP - AGENDAMENTO DE CONSULTA
-            
-            Prezado(a) {name}, {greeting}!
-            
-Em atendimento à sua solicitação realizada através do protocolo de atendimento de n.º {protocol}, listamos abaixo as informações referente ao agendamento da sua consulta:
-
-AVALIAÇÃO xxxxxxxxxxx
-
-Dia: xxxxxx.
-Clínica: xxxxx.
-Dr(a): xxxx.
-
-Por gentileza, compareça a consulta com antecedência de no mínimo 10 minutos e caso possua, leve suas radiografias, isso facilita o seu atendimento.
- 
-Caso não consiga comparecer na consulta informada acima na data e horário marcado, por gentileza, entre em contato com a clínica para realizar o reagendamento ou cancelamento da sua consulta com no mínimo 24 horas de antecedência.`,
-
-            carteirinha: `Título: ODONTOGROUP - CARTEIRINHA
-            
-            Prezado(a) {name}, {greeting}!
-
-Em atendimento à sua solicitação pelo protocolo de atendimento n.º {protocol}, segue em anexo sua carteirinha e a de sua dependente do plano odontológico. 
-Lembrando que já está disponível pelo Aplicativo - OdontoGroup Associado a carteirinha online, baixe nosso APP através do Apple Store (iOS) ou Play Store (Android) e tenha essa e outros serviços na palma da sua mão. 
-Em seu primeiro acesso no APP seu login é a 1ª letra de seu nome mais os 3 primeiros dígitos do seu CPF.`,
-
-            semCPF: `Prezado(a) {name}, {greeting}!
-
-Acusamos o recebimento de sua solicitação e para que possamos localizar o seu contrato em nosso sistema, por gentileza nos informe seu nome completo, n° do seu CPF e telefone de contato.`,
-
-            formularioReembolso: `Título: ODONTOGROUP - FORMULÁRIO DE REQUISIÇÃO DE REEMBOLSO
-            
-            Prezado(a) {name}, {greeting}!
-            
-Em atenção à sua solicitação realizada por meio do protocolo de n.º {protocol}, segue em anexo o Formulário de Requisição de Reembolso (FRR). 
-Solicitamos a leitura do formulário com atenção, considerando as exigências pertinentes ao preenchimento integral de todas as seções, visando à eficiência do processo de reembolso.`,
-
-            boleto: `Título: ODONTOGROUP - BOLETO
-
-            Prezado(a) {name}, {greeting}!
-
-            Em atenção à sua solicitação realizada por meio do protocolo de n.º {protocol}, segue em anexo o boleto referente xxxxxxxxxxx.`,
-
-            guiaContratual: `Título: ODONTOGROUP - GUIA DE LEITURA CONTRATUAL
-
-            Prezado(a) {name}, {greeting}!
-
-            Em atendimento à sua solicitação realizada através do protocolo de atendimento de n.º {protocol}, segue o Guia de Leitura Contratual contendo todas as informações referente o produto contratado, inclusive a cobertura do plano odontológico.`,
+            tentativaContato: `Título: ODONTOGROUP - TENTATIVA DE CONTATO\n\nPrezada(o) {name}, {greeting}!\n\nTentamos contato através do telefone xxxxxxxxxx, porém não obtivemos sucesso. Entre em contato com nossa central de atendimento sobre o protocolo n° {protocol}.`,
+            acusamosRecebimento: `Prezada(o) {name}, {greeting}!\n\nAcusamos o recebimento da sua solicitação pelo protocolo n.º {protocol}. Em breve retornaremos com mais informações.`,
+            comprovanteCancelamento: `Título: ODONTOGROUP - COMPROVANTE DE CANCELAMENTO\n\nPrezada(o) {name}, {greeting}!\n\nSegue em anexo o comprovante de cancelamento do contrato, referente ao protocolo n.º {protocol}.`,
+            acusacaoReembolso: `Prezada(o) {name}, {greeting}!\n\nRecebemos sua solicitação pelo protocolo n.º {protocol}. A documentação foi redirecionada ao setor responsável para análise.`,
+            envioRedes: `Título: ODONTOGROUP - REDES DE ATENDIMENTO\n\nPrezada(o) {name}, {greeting}!\n\nSegue abaixo as redes de atendimento para a especialidade de xxxxxxxxxx, referente ao protocolo n.º {protocol}.`,
+            agendamento: `Título: ODONTOGROUP - AGENDAMENTO DE CONSULTA\n\nPrezada(o) {name}, {greeting}!\n\nInformações sobre o agendamento da sua consulta pelo protocolo n.º {protocol}: AVALIAÇÃO xxxxxxxxxxx.\nDia: xxxxxx.\nClínica: xxxxx.\nDr(a): xxxx.\n\nCompareça com 10 minutos de antecedência e leve suas radiografias, se tiver.`,
+            carteirinha: `Título: ODONTOGROUP - CARTEIRINHA\n\nPrezada(o) {name}, {greeting}!\n\nSegue em anexo sua carteirinha e a de sua dependente, referente ao protocolo n.º {protocol}. Baixe nosso APP para acessá-la online.`,
+            semCPF: `Prezada(o) {name}, {greeting}!\n\nPara localizar seu contrato, informe seu nome completo, CPF e telefone.`,
+            formularioReembolso: `Título: ODONTOGROUP - FORMULÁRIO DE REQUISIÇÃO DE REEMBOLSO\n\nPrezada(o) {name}, {greeting}!\n\nSegue em anexo o Formulário de Requisição de Reembolso (FRR) referente ao protocolo n.º {protocol}.`,
+            boleto: `Título: ODONTOGROUP - BOLETO\n\nPrezada(o) {name}, {greeting}!\n\nSegue em anexo o boleto referente a xxxxxxxxxxx, protocolo n.º {protocol}.`,
+            guiaContratual: `Título: ODONTOGROUP - GUIA DE LEITURA CONTRATUAL\n\nPrezada(o) {name}, {greeting}!\n\nSegue o Guia de Leitura Contratual referente ao protocolo n.º {protocol}.`,
         };
 
         function getGreeting() {
             const hours = new Date().getHours();
-            if (hours < 12) {
-                return "bom dia";
-            } else if (hours < 18) {
-                return "boa tarde";
-            } else {
-                return "boa noite";
-            }
+            return hours < 12 ? "bom dia" : hours < 18 ? "boa tarde" : "boa noite";
         }
 
         function capitalizeName(name) {
-            return name
-                .toLowerCase()
-                .split(' ')
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(' ');
+            return name.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
         }
 
         function generateText() {
-            const rawName = document.getElementById("name").value;
+            const name = capitalizeName(document.getElementById("name").value);
             const protocol = document.getElementById("protocol").value;
             const purpose = document.getElementById("purpose").value;
             const resultElement = document.getElementById("result");
             const greeting = getGreeting();
-            const name = capitalizeName(rawName);
 
             if (name && protocol && purpose) {
-                const textTemplate = texts[purpose];
-                const personalizedText = textTemplate.replace(/{name}/g, name)
-                                                     .replace(/{greeting}/g, greeting)
-                                                     .replace(/{protocol}/g, protocol);
-                resultElement.textContent = personalizedText;
+                const textTemplate = texts[purpose].replace(/{name}/g, name).replace(/{greeting}/g, greeting).replace(/{protocol}/g, protocol);
+                resultElement.textContent = textTemplate;
             } else {
                 resultElement.textContent = "Por favor, preencha o nome, o protocolo e escolha uma finalidade.";
             }
         }
+
+        // Funções do modal
+        function openModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "block";
+            // Espera um pouco antes de adicionar a animação para permitir que o modal seja exibido
+            setTimeout(() => {
+                modal.querySelector('.modal-content').style.opacity = 1; // Torna o conteúdo visível
+            }, 50); // Um pequeno atraso para garantir que a animação seja aplicada
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            const modalContent = modal.querySelector('.modal-content');
+            modalContent.classList.add('fade-out'); // Adiciona a classe de desvanecimento
+
+            // Espera a animação terminar antes de esconder o modal
+            setTimeout(() => {
+                modal.style.display = "none";
+                modalContent.classList.remove('fade-out'); // Remove a classe para poder usar novamente
+                modalContent.style.opacity = 1; // Restaura a opacidade
+            }, 500); // Tempo deve ser igual ao da animação
+        }
+
+        // Abre o modal ao carregar a página
+        window.onload = openModal;
+
+        // Fecha o modal se o usuário clicar fora da área do modal
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("myModal")) {
+                closeModal();
+            }
+        };
     </script>
 
 </body>
